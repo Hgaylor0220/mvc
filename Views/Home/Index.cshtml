@@ -1,8 +1,41 @@
-﻿@{
+﻿
+@using mvc.Models;
+@using System.Security.Claims;
+@model IEnumerable<mvc.Models.River>
+
+<div class ="jumbotron">
+<h1>List of Rivers</h1>
+</div>
+<div class ="riverhome">
+@if (Model.Any())
+{
+  <h3>
+    @foreach (River river in Model)
+    {
+      <li>@Html.ActionLink($"{river.RiverName}", "Details", new { id = river.RiverId })
+        </li>
+    }
+  </h3>
+} 
+else
+{
+  <h3>No rivers... weird!</h3>
+}
+<br>
+
+
+<p>@Html.ActionLink("Add new River", "Create")</p>
+
+<p>@Html.ActionLink("Home", "Index", "Home")</p>
+</div>
+
+@* @{
     ViewData["Title"] = "Home Page";
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+    <h1 class="display-4"> Wellcome to the PNW White water application build to provide you with up to date information on all the great rivers around. You can search a river and find out what the current flow, class, length of the run and gps corrdinates of the put in and take out's of the river. What are you waiting for? get out there, be safe and get wild! </h1>
+    <p>@Html.ActionLink("View your favorite rivers", "Index", "Favorites")</p>
+    <p>@Html.ActionLink("View all Rivers", "Index", "Rivers")</p>
+    
+</div> *@

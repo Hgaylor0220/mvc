@@ -1,0 +1,29 @@
+@using mvc.Models;
+@using System.Security.Claims;
+@model IEnumerable<mvc.Models.River>
+
+<div class ="jumbotron">
+<h1>List of Rivers</h1>
+</div>
+<div class ="riverhome">
+@if (Model.Any())
+{
+  <h3>
+    @foreach (River river in Model)
+    {
+      <li>@Html.ActionLink($"{river.RiverName}", "Details", new { id = river.RiverId })
+        </li>
+    }
+  </h3>
+} 
+else
+{
+  <h3>No rivers... weird!</h3>
+}
+<br>
+
+
+<p>@Html.ActionLink("Add new River", "Create")</p>
+
+<p>@Html.ActionLink("Home", "Index", "Home")</p>
+</div>
